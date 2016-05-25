@@ -17,6 +17,8 @@ public class KataStringCalculator {
                 int valueFromNumber = Integer.valueOf(value);
                 if (valueFromNumber < 0) {
                     throw new Exception("Error: Negative number");
+                }else if(valueFromNumber > 1000){
+                    continue;
                 }
                 sum = sum + valueFromNumber;
             }
@@ -25,6 +27,8 @@ public class KataStringCalculator {
             int valueParsed = Integer.valueOf(valuesToAdd);
             if (valueParsed < 0) {
                 throw new Exception();
+            }else if(valueParsed > 1000){
+                return 0;
             }
             return Integer.valueOf(valueParsed);
         }

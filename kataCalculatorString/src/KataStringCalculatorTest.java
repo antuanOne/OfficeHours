@@ -34,4 +34,11 @@ public class KataStringCalculatorTest  {
         calculator.add("-10 8");
     }
 
+    @Test
+    public void testAddWhenValuesGreaterThanThousand()throws Exception {
+        KataStringCalculator calculator = new KataStringCalculator();
+        assertEquals(27,calculator.add("10 7 1002 9 1"));
+        assertEquals(1001,calculator.add("1000 1"));
+    }
+
 }
