@@ -3,7 +3,7 @@
  */
 public class KataStringCalculator {
 
-    public int add(String valuesToAdd) {
+    public int add(String valuesToAdd) throws Exception {
 
         if (valuesToAdd.length() == 0) {
             return 0;
@@ -14,11 +14,19 @@ public class KataStringCalculator {
         if (numbersToAdd.length > 1) {
             int sum = 0;
             for (String value : numbersToAdd) {
-                sum = sum + Integer.valueOf(value);
+                int valueFromNumber = Integer.valueOf(value);
+                if (valueFromNumber < 0) {
+                    throw new Exception("Error: Negative number");
+                }
+                sum = sum + valueFromNumber;
             }
             return sum;
         } else {
-            return Integer.valueOf(valuesToAdd);
+            int valueParsed = Integer.valueOf(valuesToAdd);
+            if (valueParsed < 0) {
+                throw new Exception();
+            }
+            return Integer.valueOf(valueParsed);
         }
 
     }
