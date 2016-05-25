@@ -11,7 +11,13 @@ public class KataStringCalculatorTest extends TestCase {
         KataStringCalculator calculator = new KataStringCalculator();
 
         assertEquals(0,calculator.add(""));
+    }
 
+    @Test
+    public void testAddWhenSingleValue(){
+        KataStringCalculator calculator = new KataStringCalculator();
+
+        assertEquals(123, calculator.add("123"));
     }
 
 }

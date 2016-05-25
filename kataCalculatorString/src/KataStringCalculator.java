@@ -9,6 +9,9 @@ public class KataStringCalculator {
             return 0;
         }
 
-        return -1;
+        int singleValue = Integer.valueOf(valuesToAdd);
+
+        return singleValue;
+
     }
 }
