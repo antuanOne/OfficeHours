@@ -9,9 +9,17 @@ public class KataStringCalculator {
             return 0;
         }
 
-        int singleValue = Integer.valueOf(valuesToAdd);
+        String[] numbersToAdd = valuesToAdd.split("[,\\s]");
 
-        return singleValue;
+        if (numbersToAdd.length > 1) {
+            int sum = 0;
+            for (String value : numbersToAdd) {
+                sum = sum + Integer.valueOf(value);
+            }
+            return sum;
+        } else {
+            return Integer.valueOf(valuesToAdd);
+        }
 
     }
 }

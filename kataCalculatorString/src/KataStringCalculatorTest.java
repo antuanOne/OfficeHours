@@ -20,4 +20,11 @@ public class KataStringCalculatorTest extends TestCase {
         assertEquals(123, calculator.add("123"));
     }
 
+    @Test
+    public void testAddWithTowValues(){
+        KataStringCalculator calculator = new KataStringCalculator();
+        assertEquals(17,calculator.add("10,7"));
+        assertEquals(17,calculator.add("10 7"));
+    }
+
 }
