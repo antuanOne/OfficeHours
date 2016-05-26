@@ -14,6 +14,13 @@ public class KataStringCalculator {
         if (valuesToAdd.startsWith("//")) {
             String[] delimitersAndValues = valuesToAdd.split("\n");
             String delimiter = delimitersAndValues[0].replace("//", "");
+
+            if (delimiter.contains("[") && delimiter.contains("]")) {
+                delimiter = delimiter.replace("[", "");
+                delimiter = delimiter.replace("]", "");
+                delimiter = escapeCharacter(delimiter);
+            }
+
             numbersToAdd = delimitersAndValues[1].split(delimiter);
 
         } else {// without customer delimiter
@@ -43,5 +50,15 @@ public class KataStringCalculator {
             return Integer.valueOf(valueParsed);
         }
 
+    }
+
+    private String escapeCharacter(String valueToEscape) {
+        if (valueToEscape.contains("*")) {
+            valueToEscape = valueToEscape.replace("*", "\\*");
+        } else if (valueToEscape.contains(" ")) {
+            valueToEscape = valueToEscape.replace(" ", "\\s");
+        }
+
+        return valueToEscape;
     }
 }
