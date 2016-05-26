@@ -41,4 +41,10 @@ public class KataStringCalculatorTest  {
         assertEquals(1001,calculator.add("1000 1"));
     }
 
+    @Test
+    public void testAddWhenUseCustomDelimiter() throws Exception {
+        KataStringCalculator calculator = new KataStringCalculator();
+        assertEquals(3,calculator.add("//;\n1;2"));
+    }
+
 }

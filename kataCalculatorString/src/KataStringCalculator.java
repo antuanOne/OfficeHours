@@ -9,7 +9,17 @@ public class KataStringCalculator {
             return 0;
         }
 
-        String[] numbersToAdd = valuesToAdd.split("[,\\s]");
+        String[] numbersToAdd;
+
+        if (valuesToAdd.startsWith("//")) {
+            String[] delimitersAndValues = valuesToAdd.split("\n");
+            String delimiter = delimitersAndValues[0].replace("//", "");
+            numbersToAdd = delimitersAndValues[1].split(delimiter);
+
+        } else {// without customer delimiter
+            numbersToAdd = valuesToAdd.split("[,\\s]");
+        }
+
 
         if (numbersToAdd.length > 1) {
             int sum = 0;
@@ -17,7 +27,7 @@ public class KataStringCalculator {
                 int valueFromNumber = Integer.valueOf(value);
                 if (valueFromNumber < 0) {
                     throw new Exception("Error: Negative number");
-                }else if(valueFromNumber > 1000){
+                } else if (valueFromNumber > 1000) {
                     continue;
                 }
                 sum = sum + valueFromNumber;
@@ -27,7 +37,7 @@ public class KataStringCalculator {
             int valueParsed = Integer.valueOf(valuesToAdd);
             if (valueParsed < 0) {
                 throw new Exception();
-            }else if(valueParsed > 1000){
+            } else if (valueParsed > 1000) {
                 return 0;
             }
             return Integer.valueOf(valueParsed);
