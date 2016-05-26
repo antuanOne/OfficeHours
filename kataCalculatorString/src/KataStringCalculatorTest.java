@@ -53,4 +53,10 @@ public class KataStringCalculatorTest {
         KataStringCalculator calculator = new KataStringCalculator();
         assertEquals(6, calculator.add("//[***]\n1***2***3"));
     }
+
+    @Test
+    public void testAddWhenManyCustomDelimiter() throws Exception {
+        KataStringCalculator calculator = new KataStringCalculator();
+        assertEquals(6,calculator.add("//[*][%]\n1*2%3"));
+    }
 }

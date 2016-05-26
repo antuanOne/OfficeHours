@@ -11,23 +11,38 @@ public class KataStringCalculator {
 
         String[] numbersToAdd;
 
+        //This means that we use a custom delimiter
         if (valuesToAdd.startsWith("//")) {
             String[] delimitersAndValues = valuesToAdd.split("\n");
             String delimiter = delimitersAndValues[0].replace("//", "");
-
             if (delimiter.contains("[") && delimiter.contains("]")) {
                 delimiter = delimiter.replace("[", "");
-                delimiter = delimiter.replace("]", "");
-                delimiter = escapeCharacter(delimiter);
+                String[] delimiters = delimiter.split("]");
+                String singleDelimiter = "";
+                String multipleDelimiterLenght = "";
+                for (String delimiterValue : delimiters) {
+                    if (delimiterValue.length() == 1) {
+                        singleDelimiter += escapeCharacter(delimiterValue);
+                    } else {
+                        if (!multipleDelimiterLenght.equals("")) {
+                            multipleDelimiterLenght += "|";
+                        }
+                        multipleDelimiterLenght += "(" + escapeCharacter(delimiterValue) + ")";
+                    }
+                }
+
+                if (multipleDelimiterLenght.equals("")) {
+                    delimiter = "[" + singleDelimiter + "]";
+                } else if (singleDelimiter.equals("")) {
+                    delimiter = multipleDelimiterLenght;
+                } else {
+                    delimiter = multipleDelimiterLenght + "|" + singleDelimiter;
+                }
             }
-
             numbersToAdd = delimitersAndValues[1].split(delimiter);
-
         } else {// without customer delimiter
             numbersToAdd = valuesToAdd.split("[,\\s]");
         }
-
-
         if (numbersToAdd.length > 1) {
             int sum = 0;
             for (String value : numbersToAdd) {
